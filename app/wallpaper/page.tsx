@@ -1,18 +1,9 @@
-import { ARClient } from "../_components/ARClient/ARClient";
+import dynamic from "next/dynamic";
 
-export default async function Page() {
-    
+const CameraCapture = dynamic(
+  () => import("../_components/CameraCapture/CameraCapture")
+);
 
-    const a = 'test'
-
-    // eslint-disable-next-line no-console
-    console.log('a', a);
-
-
-    return (
-        <div>
-            <h1>Visualizer</h1>
-            <ARClient />
-        </div>
-    )
+export default function WallpaperPage() {
+  return <CameraCapture />;
 }

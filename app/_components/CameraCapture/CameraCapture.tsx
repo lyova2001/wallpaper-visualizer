@@ -85,20 +85,19 @@ export default function CameraCapture() {
     const canvas = canvasRef.current;
     if (!video || !canvas) return;
 
-    const w = video.videoWidth;
-    const h = video.videoHeight;
+    const {videoWidth, videoHeight} = video
 
-    if (!w || !h) {
+    if (!videoWidth || !videoHeight) {
       setPermissionError("It's not ready yet");
       return;
     }
 
-    canvas.width = w;
-    canvas.height = h;
+    canvas.width = videoWidth;
+    canvas.height = videoHeight;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    ctx.drawImage(video, 0, 0, w, h);
+    ctx.drawImage(video, 0, 0, videoWidth, videoHeight);
 
     setBusy(true);
     try {
